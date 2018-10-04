@@ -1,8 +1,5 @@
 #import "PIImageView.h"
 
-@interface RotateRootViewController:UIViewController
-@end
-
 @interface SpectrogramView:UIView
 @end
 
@@ -12,7 +9,7 @@
 
 %hook SpectrogramViewController
 PIImageView*overlayView;
-SpectrogramView*mySuperView;
+SpectrogramView*refView;
 
 -(void)viewDidLoad{
 	%orig;
@@ -25,10 +22,10 @@ NSBundle*bundle=[NSBundle bundleWithPath:bundlePath];
 
  for (SpectrogramView*subview in self.view.subviews){
 	   if ([subview isMemberOfClass:[objc_getClass("SpectrogramView") class]]) { 
-		   mySuperView=subview;
+		   refView=subview;
         }
  }
-overlayView=[[PIImageView alloc]initWithFrame:mySuperView.bounds];
+overlayView=[[PIImageView alloc]initWithFrame:refView.bounds];
 ////overlayView.contentMode=UIViewContentModeScaleAspectFill;
 overlayView.image=[UIImage imageNamed:@"UIViewOverlay" inBundle:bundle compatibleWithTraitCollection:nil];
  [self.view addSubview:overlayView];
@@ -39,8 +36,8 @@ overlayView.image=[UIImage imageNamed:@"UIViewOverlay" inBundle:bundle compatibl
 %orig;
 
 NSLog(@"LayoutSubviews");
-	overlayView.frame=mySuperView.bounds;
-	overlayView.bounds=mySuperView.bounds;
+	overlayView.frame=refView.bounds;
+	overlayView.bounds=refView.bounds;
 	
 			 		      	 [self.view bringSubviewToFront:overlayView];
 	
@@ -57,9 +54,9 @@ NSLog(@"LayoutSubviews");
 -(void)toggleFullScreen{
 %orig;
 
-   	 [mySuperView bringSubviewToFront:overlayView];  
-   	  overlayView.frame=mySuperView.bounds;
-	overlayView.bounds=mySuperView.bounds;
+   	 [self.view bringSubviewToFront:overlayView];  
+   	  overlayView.frame=refView.bounds;
+	overlayView.bounds=refView.bounds;
 	
 	for (UIView*subview in self.view.subviews){	 
 	   if ([subview isKindOfClass:[UIButton class]]) { 
