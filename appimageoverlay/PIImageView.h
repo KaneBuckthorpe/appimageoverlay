@@ -1,0 +1,4 @@
+
+
+@interface PIImageView :UIImageView
+@end
