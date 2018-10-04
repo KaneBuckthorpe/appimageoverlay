@@ -46,7 +46,8 @@ overlayView.image=[UIImage imageNamed:@"UIViewOverlay" inBundle:bundle compatibl
  for (UIView*subview in self.view.subviews){
 	 
 	   if ([subview isKindOfClass:[UIButton class]]) { 
-   	  [self.view bringSubviewToFront:subview];     
+   	  [self.view bringSubviewToFront:subview];   
+   	  subview.backgroundColor=UIColor.blackColor;  
         }
  }
  
