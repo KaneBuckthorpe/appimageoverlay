@@ -1,0 +1,10 @@
+Package: com.kaneb.appimageoverlay
+Name: AppImageOverlay
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: Kane Buckthorpe
+Author: Kane Buckthorpe
+Section: Tweaks
+Version: 0.0.1-1+debug
+Installed-Size: 160
