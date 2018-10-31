@@ -6,5 +6,7 @@ This was completion of the tweak bounty listed [here](https://www.reddit.com/r/T
 I have open sourced this tweak/code to be a learning resource for new tweak developers.
 
 ---
-![appimageoverlay](repo_assets/spectrumView.png)
-![appimageoverlay](repo_assets/spectrumAltered.png)
+## Before
+![before1](repo_assets/before1.png) ![before2](repo_assets/before2.png)
+## After
+![after1](repo_assets/after1.png) ![after2](repo_assets/after2.png)
