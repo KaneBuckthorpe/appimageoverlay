@@ -7,11 +7,11 @@
 - (void)toggleFullScreen;
 @end
 
-% hook SpectrogramViewController PIImageView *overlayView;
+%hook SpectrogramViewController PIImageView *overlayView;
 SpectrogramView *refView;
 
 - (void)viewDidLoad {
-    % orig;
+    %orig;
     
     NSString *bundlePath = @"/Library/Application Support/AppImageOverlay";
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
@@ -32,7 +32,7 @@ SpectrogramView *refView;
     NSLog(@"ViewDidLoad");
 }
 - (void)viewDidLayoutSubviews {
-    % orig;
+    %orig;
     
     NSLog(@"LayoutSubviews");
     overlayView.frame = refView.bounds;
@@ -49,7 +49,7 @@ SpectrogramView *refView;
 }
 
 - (void)toggleFullScreen {
-    % orig;
+    %orig;
     
     [self.view bringSubviewToFront:overlayView];
     overlayView.frame = refView.bounds;
@@ -62,4 +62,4 @@ SpectrogramView *refView;
         }
     }
 }
-% end
+%end
